@@ -24,4 +24,14 @@ public class UserController {
         users.add(userDTO);
         return "注册成功";
     }
+
+    @PostMapping("/login")
+    public UserDTO login(@RequestBody UserDTO userDTO) {
+        for (UserDTO user : users) {
+            if (user.getName().equals(userDTO.getName()) && user.getPassword().equals(userDTO.getPassword())) {
+                return user;
+            }
+        }
+        return null;
+    }
 }
